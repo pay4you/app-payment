@@ -10,8 +10,7 @@ import { CurtoCafPage } from '../curto-caf/curto-caf';
   templateUrl: 'tabs-controller.html'
 })
 export class TabsControllerPage {
-  // this tells the tabs component which Pages
-  // should be each tab's root Page
+
   tab1Root: any = EstabelecimentosPage;
   tab2Root: any = PedidoPage;
   tab3Root: any = ContaPage;
@@ -20,13 +19,16 @@ export class TabsControllerPage {
   goToConta(params){
     if (!params) params = {};
     this.navCtrl.push(ContaPage);
-  }goToPedido(params){
+  }
+  goToPedido(params){
     if (!params) params = {};
     this.navCtrl.push(PedidoPage);
-  }goToEstabelecimentos(params){
+  }
+  goToEstabelecimentos(params){
     if (!params) params = {};
     this.navCtrl.push(EstabelecimentosPage);
-  }goToCurtoCaf(params){
+  }
+  goToCurtoCaf(params){
     if (!params) params = {};
     this.navCtrl.push(CurtoCafPage);
   }
