@@ -34,11 +34,11 @@ export class EntrarPage {
 
     let header = new HttpHeaders().set("Content-Type", "application/json");
 
-    this.http.post('http://pay4you-club.umbler.net/v1/users/authenticate', JSON.stringify(params), { headers: header}).toPromise().then(res => {
-      // console.log('response authentication', res);
+    this.http.post('http://pay4you-club.umbler.net/v1/users/authenticate', JSON.stringify(params), { headers: header}).toPromise().then((res: any) => {
+      console.log('response authentication', res);
       if(res.success) {
         this.msg = res.message;
-        this.navCtrl.setRoot(TabsControllerPage);
+        this.navCtrl.setRoot(TabsControllerPage, {'token': res.token});
       }
     });
     // this.navCtrl.setRoot(TabsControllerPage);

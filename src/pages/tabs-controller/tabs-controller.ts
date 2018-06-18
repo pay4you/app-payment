@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ContaPage } from '../conta/conta';
 import { PedidoPage } from '../pedido/pedido';
 import { EstabelecimentosPage } from '../estabelecimentos/estabelecimentos';
@@ -14,19 +14,22 @@ export class TabsControllerPage {
   tab1Root: any = EstabelecimentosPage;
   tab2Root: any = PedidoPage;
   tab3Root: any = ContaPage;
-  constructor(public navCtrl: NavController) {
+  token: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.token = this.navParams.get('token');
+    console.log('tabs', this.token);
   }
   goToConta(params){
     if (!params) params = {};
-    this.navCtrl.push(ContaPage);
+    this.navCtrl.push(ContaPage, this.token);
   }
   goToPedido(params){
     if (!params) params = {};
-    this.navCtrl.push(PedidoPage);
+    this.navCtrl.push(PedidoPage, this.token);
   }
   goToEstabelecimentos(params){
     if (!params) params = {};
-    this.navCtrl.push(EstabelecimentosPage);
+    this.navCtrl.push(EstabelecimentosPage, {'token': this.token});
   }
   goToCurtoCaf(params){
     if (!params) params = {};
