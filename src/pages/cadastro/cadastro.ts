@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 import { CurtoCafPage } from '../curto-caf/curto-caf';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'page-cadastro',
@@ -10,11 +11,33 @@ import { CurtoCafPage } from '../curto-caf/curto-caf';
 export class CadastroPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
-  constructor(public navCtrl: NavController) {
+  public name;
+  public email;
+  public password;
+  public cpf;
+  public address;
+  public phone;
+
+  constructor(public navCtrl: NavController,
+              public http: HttpClient) {
   }
-  goToEstabelecimentos(params){
-    if (!params) params = {};
-    this.navCtrl.setRoot(TabsControllerPage);
+
+  goToEstabelecimentos(){
+    let cadastro = {
+      "name": this.name,
+      "email": this.email,
+      "password": this.password,
+      "cpf": this.cpf,
+      "address": this.address,
+      "phone": this.phone
+    };
+
+    let url = 'http://pay4you-club.umbler.net/v1/users';
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    this.http.post(url, JSON.stringify(cadastro), { headers: headers}).toPromise().then((res) => {
+      console.log('resposta do cadastro', res);
+      this.navCtrl.setRoot(TabsControllerPage);
+    });
   }
   goToCurtoCaf(params){
     if (!params) params = {};

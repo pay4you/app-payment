@@ -7,10 +7,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   selector: 'page-estabelecimentos',
   templateUrl: 'estabelecimentos.html'
 })
+
 export class EstabelecimentosPage {
 
   private auth: any;
   private establishments: any;
+  public page: any = 1;
 
   constructor(public navCtrl: NavController, public http: HttpClient,
               public navParams: NavParams) {
@@ -23,17 +25,33 @@ export class EstabelecimentosPage {
 
     let header = new HttpHeaders().set('Authorization', this.auth);
 
+    let url = 'http://pay4you-club.umbler.net/v1/establishments?pageNumber=' + this.page + '&pageSize=3';
+
     console.log('headers', this.auth);
-    this.establishments = this.http.get('http://pay4you-club.umbler.net/v1/establishments?pageNumber=1&pageSize=3', { headers: header }).toPromise().then(res => {
-    console.log('estabelecimentos', res);
-      return res;
+    this.http.get(url, { headers: header }).toPromise().then(res => {
+      this.establishments = res;
     });
+
+    console.log('estab', this.establishments);
   }
 
-  goToCurtoCaf(params){
-    if (!params) params = {};
-    this.navCtrl.push(CurtoCafPage);
+  goToCurtoCaf(item){
+    console.log('goToCurtoCaf', item);
+    this.navCtrl.push(CurtoCafPage, {'token': this.auth, 'establishment': item});
   }
+
+  backPage() {
+    if(this.page > 1) {
+      this.page--;
+      this.getEstablishments();
+    }
+  }
+
+  forwardPage() {
+    this.page++;
+    this.getEstablishments();
+  }
+
 
 
 }

@@ -1,20 +1,15 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Curto Café
+      {{ establishment.social_name }}
     </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page8">
   <ion-list id="curtoCaf-list5">
-    <ion-item color="none" id="curtoCaf-list-item22">
-      Expresso R$27,00
-    </ion-item>
-    <ion-item color="none" id="curtoCaf-list-item23">
-      Cappucino R$27,00
-    </ion-item>
-    <ion-item color="none" id="curtoCaf-list-item24">
-      Café com leite R$27,00
+    <ion-item color="none" *ngFor="let product of products">
+      {{ product.name }} R$ {{ product.price/100 | number: '.2' }}
     </ion-item>
   </ion-list>
+
 </ion-content>
