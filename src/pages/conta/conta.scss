@@ -1,3 +1,46 @@
 page-conta {
 
+
+  .button {
+    margin: 10px;
+    width: calc(100% - 20px);
+  }
+
+  .cartao {
+    border-radius: 10px;
+    background: linear-gradient(to bottom right, #444 0%, #666 100%);
+    padding: 1px;
+
+    ion-label {
+      overflow: auto;
+      margin: 0;
+    }
+    .item-md {
+      background: none;
+    }
+    .cardnumber, .valid {
+      color: rgba(236, 220, 236, 1);
+      font-family: "Share Tech Mono", monospace;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-shadow: 0 -1px 0px rgba(155, 155, 155, 0.5), 0 1px 1px rgba(0, 0, 0, 20.75);
+    }
+
+    .cardnumber {
+      margin-top: 50px;
+      font-size: 1.35em;
+      //position: absolute;
+      //top: 80px;
+    }
+    .valid {
+      font-size: 1.35em;
+
+      .label {
+        font-size: .5em;
+        letter-spacing: 0;
+        text-shadow: none;
+        color: #222;
+      }
+    }
+  }
 }

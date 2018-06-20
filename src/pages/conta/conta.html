@@ -16,35 +16,42 @@
           <img />
         </ion-avatar>
         <h2>
-          Lucas Trindade
+          {{ user?.name }}
         </h2>
       </ion-item>
       <ion-item color="none" id="conta-list-item45">
         <ion-icon name="home" item-left></ion-icon>
-        Rua Itaituba, S/N. Lote 19, Quadra 1
+        {{ user?.address }}
       </ion-item>
       <ion-item color="none" id="conta-list-item47">
         <ion-icon name="phone-portrait" item-left></ion-icon>
-        (21) 98013-5232
+        {{ user?.phone }}
       </ion-item>
-      <ion-item color="none" id="conta-list-item48">
+      <ion-item color="none">
         <ion-icon name="document" item-left></ion-icon>
-        28.261.513-7
+        {{ user?.cpf }}
       </ion-item>
     </ion-list>
   </ion-card>
   <h3 id="conta-heading1" style="color:#000000;">
     Cartões de Crédito
   </h3>
-  <ion-card id="conta-card23">
+  <ion-card class="cartao">
     <ion-list>
       <ion-item id="conta-list-item-container9">
-        <div id="conta-markdown14" class="show-list-numbers-and-dots">
-          <p style="margin-top:0px;color:#000000;">
-            <strong>
-              Card Number:
-            </strong>
+        <div class="show-list-numbers-and-dots">
+          <p class="cardnumber">
             4677.2803.0402.9624
+          </p>
+        </div>
+      </ion-item>
+      <ion-item id="conta-list-item-container11">
+        <div id="conta-markdown17" class="show-list-numbers-and-dots">
+          <p class="valid">
+            10/2023
+            <span class="label">
+              Valid date
+            </span>
           </p>
         </div>
       </ion-item>
@@ -58,16 +65,10 @@
           </p>
         </div>
       </ion-item>
-      <ion-item id="conta-list-item-container11">
-        <div id="conta-markdown17" class="show-list-numbers-and-dots">
-          <p style="margin-top:0px;color:#000000;">
-            <strong>
-              Valid date:
-            </strong>
-            10/2023
-          </p>
-        </div>
-      </ion-item>
+
     </ion-list>
   </ion-card>
+  <button class="button" ion-button color="positive" block (click)="openModalCard()">
+    Adicionar cartão
+  </button>
 </ion-content>
