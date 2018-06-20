@@ -11,7 +11,8 @@
 
       <ion-item *ngFor="let item of establishments?.items" color="none" (click)="goToCurtoCaf(item)">
         <ion-thumbnail item-left>
-          <img src="assets/img/wRHBzTr8Swq5Aqbj6wKX_32808343_1732863783466170_1685969371727396864_n.png" />
+          <img *ngIf="item?.image" src="{{item?.image}}"/>
+          <img *ngIf="!item?.image" src="assets/img/wRHBzTr8Swq5Aqbj6wKX_32808343_1732863783466170_1685969371727396864_n.png" />
         </ion-thumbnail>
         <h2>
           {{ item.social_name }}
@@ -30,22 +31,6 @@
         <!--<button ion-button color="light"></button>-->
       <!--</ion-item-options>-->
     </ion-item-sliding>
-    <!--<ion-item color="none" id="estabelecimentos-list-item14">-->
-      <!--<ion-thumbnail item-left>-->
-        <!--<img src="assets/img/9OcTUP6SOCMzMtyBApfg_14199224_628554300640036_8128800856364418131_n.jpg" />-->
-      <!--</ion-thumbnail>-->
-      <!--<h2>-->
-        <!--Aero Gourmet-->
-      <!--</h2>-->
-    <!--</ion-item>-->
-    <!--<ion-item color="none" id="estabelecimentos-list-item15">-->
-      <!--<ion-thumbnail item-left>-->
-        <!--<img src="assets/img/AA29sTtlTuy6T7v5Q8W9_535122_645366998938288_7630764725656536715_n.jpg" />-->
-      <!--</ion-thumbnail>-->
-      <!--<h2>-->
-        <!--Conexão Restaurante-->
-      <!--</h2>-->
-    <!--</ion-item>-->
   </ion-list>
   <div *ngIf="!establishments?.items.length">
     Não foi possível encontrar nenhum estabelecimento.

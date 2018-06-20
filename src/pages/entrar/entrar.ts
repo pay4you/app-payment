@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { CadastroPage } from '../cadastro/cadastro';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -14,8 +15,18 @@ export class EntrarPage {
   private password: any;
   public msg: any;
 
-  constructor(public navCtrl: NavController, public http: HttpClient) {
+  constructor(public navCtrl: NavController,
+              public http: HttpClient,
+              private storage: Storage) {
+
+    this.storage.get('token').then(token => {
+      console.log('token', token);
+      if(token){
+        this.navCtrl.setRoot(TabsControllerPage, {'token': token});
+      }
+    });
   }
+
   goToCadastro(params){
     if (!params) params = {};
 
@@ -23,9 +34,8 @@ export class EntrarPage {
 
     this.navCtrl.push(CadastroPage);
   }
-  goToEstabelecimentos(){
 
-    console.log('goToEstabelecimento - login', this.email, ' senha', this.password);
+  goToEstabelecimentos(){
 
     let params = {
       "email": this.email,
@@ -37,6 +47,7 @@ export class EntrarPage {
     this.http.post('http://pay4you-club.umbler.net/v1/users/authenticate', JSON.stringify(params), { headers: header}).toPromise().then((res: any) => {
       console.log('response authentication', res);
       if(res.success) {
+        this.storage.set('token', res.token);
         this.msg = res.message;
         this.navCtrl.setRoot(TabsControllerPage, {'token': res.token});
       }
