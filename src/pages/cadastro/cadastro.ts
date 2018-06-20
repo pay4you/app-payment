@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TabsControllerPage } from '../tabs-controller/tabs-controller';
 import { CurtoCafPage } from '../curto-caf/curto-caf';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: 'page-cadastro',
@@ -17,9 +18,15 @@ export class CadastroPage {
   public cpf;
   public address;
   public phone;
+  public rg;
+  public cardname;
+  public cardcvv;
+  public cardnumber;
+  public cardvalid;
 
   constructor(public navCtrl: NavController,
-              public http: HttpClient) {
+              public http: HttpClient,
+              public storage: Storage) {
   }
 
   goToEstabelecimentos(){
@@ -32,6 +39,19 @@ export class CadastroPage {
       "phone": this.phone
     };
 
+    let card = {
+      "cardname": this.cardname,
+      "cardnumber": this.cardnumber,
+      "cvv": this.cardcvv,
+      "valid": this.cardvalid
+    };
+
+    let cards: any[];
+
+    cards[0] = card;
+
+    this.storage.set('cards', cards);
+
     let url = 'http://pay4you-club.umbler.net/v1/users';
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     this.http.post(url, JSON.stringify(cadastro), { headers: headers}).toPromise().then((res) => {
@@ -39,6 +59,7 @@ export class CadastroPage {
       this.navCtrl.setRoot(TabsControllerPage);
     });
   }
+
   goToCurtoCaf(params){
     if (!params) params = {};
     this.navCtrl.push(CurtoCafPage);

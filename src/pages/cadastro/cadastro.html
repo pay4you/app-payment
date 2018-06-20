@@ -6,66 +6,66 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page7">
-    <ion-list id="cadastro-list2">
-      <ion-item id="cadastro-input3">
+    <ion-list>
+      <ion-item>
         <ion-label>
           Nome
         </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+        <ion-input type="text" placeholder="" [(ngModel)]="name"></ion-input>
       </ion-item>
-      <ion-item id="cadastro-input4">
+      <ion-item>
         <ion-label>
           Email
         </ion-label>
-        <ion-input type="email" placeholder=""></ion-input>
+        <ion-input type="email" placeholder="" [(ngModel)]="email"></ion-input>
       </ion-item>
-      <ion-item id="cadastro-input6">
+      <ion-item>
         <ion-label>
           CPF
         </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+        <ion-input type="text" placeholder="" [(ngModel)]="cpf"></ion-input>
       </ion-item>
-      <ion-item id="cadastro-input7">
+      <ion-item>
         <ion-label>
           RG
         </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+        <ion-input type="text" placeholder="" [(ngModel)]="rg"></ion-input>
       </ion-item>
       <ion-item id="cadastro-input8">
         <ion-label>
           Telefone
         </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+        <ion-input type="text" placeholder="" [(ngModel)]="phone"></ion-input>
       </ion-item>
-      <ion-item id="cadastro-input9">
+      <ion-item>
         <ion-label>
           Número do Cartão de Crédito
         </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+        <ion-input type="text" placeholder="" [(ngModel)]="cardnumber"></ion-input>
       </ion-item>
-      <ion-item id="cadastro-input10">
+      <ion-item>
         <ion-label>
           Nome no Cartão de Crédito
         </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+        <ion-input type="text" placeholder="" [(ngModel)]="cardname"></ion-input>
       </ion-item>
-      <ion-item id="cadastro-input11">
+      <ion-item>
         <ion-label>
           Data de Validade
         </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+        <ion-input type="text" placeholder="" [(ngModel)]="cardvalid"></ion-input>
       </ion-item>
-      <ion-item id="cadastro-input12">
+      <ion-item>
         <ion-label>
           CVV
         </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+        <ion-input type="text" placeholder="" [(ngModel)]="cardcvv"></ion-input>
       </ion-item>
-      <ion-item id="cadastro-input5">
+      <ion-item>
         <ion-label>
           Senha
         </ion-label>
-        <ion-input type="text" placeholder=""></ion-input>
+        <ion-input type="text" placeholder="" [(ngModel)]="password"></ion-input>
       </ion-item>
     </ion-list>
     <button id="cadastro-button3" ion-button color="positive" block on-click="goToEstabelecimentos()">
