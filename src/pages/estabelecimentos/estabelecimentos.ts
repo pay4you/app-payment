@@ -17,7 +17,6 @@ export class EstabelecimentosPage {
 
   constructor(public navCtrl: NavController, public http: HttpClient,
               public navParams: NavParams) {
-                console.log('estabelecimentos', this.navParams.data);
     this.auth = this.navParams.get('token');
     this.getEstablishments();
   }
@@ -28,7 +27,6 @@ export class EstabelecimentosPage {
 
     let url = 'http://pay4you-club.umbler.net/v1/establishments?pageNumber=' + this.page + '&pageSize=3';
 
-    console.log('headers', this.auth);
     this.http.get(url, { headers: header }).toPromise().then(res => {
       this.establishments = res;
     });
@@ -36,7 +34,6 @@ export class EstabelecimentosPage {
   }
 
   goToCurtoCaf(item){
-    console.log('goToCurtoCaf', item);
     this.navCtrl.push(CurtoCafPage, {'token': this.auth, 'establishment': item});
   }
 

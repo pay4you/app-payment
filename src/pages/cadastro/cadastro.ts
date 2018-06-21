@@ -55,7 +55,6 @@ export class CadastroPage {
     let url = 'http://pay4you-club.umbler.net/v1/users';
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     this.http.post(url, JSON.stringify(cadastro), { headers: headers}).toPromise().then((res) => {
-      console.log('resposta do cadastro', res);
       this.navCtrl.setRoot(TabsControllerPage);
     });
   }

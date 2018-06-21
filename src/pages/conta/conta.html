@@ -36,19 +36,19 @@
   <h3 id="conta-heading1" style="color:#000000;">
     Cartões de Crédito
   </h3>
-  <ion-card class="cartao">
+  <ion-card *ngFor="let card of cards" class="cartao">
     <ion-list>
-      <ion-item id="conta-list-item-container9">
+      <ion-item>
         <div class="show-list-numbers-and-dots">
           <p class="cardnumber">
-            4677.2803.0402.9624
+            {{ card.cardnumber }}
           </p>
         </div>
       </ion-item>
       <ion-item id="conta-list-item-container11">
         <div id="conta-markdown17" class="show-list-numbers-and-dots">
           <p class="valid">
-            10/2023
+             {{ card.cardvalid }}
             <span class="label">
               Valid date
             </span>
@@ -61,7 +61,7 @@
             <strong>
               CVV
             </strong>
-            : 152
+            : {{ card.cardcvv }}
           </p>
         </div>
       </ion-item>

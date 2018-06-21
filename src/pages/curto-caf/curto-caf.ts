@@ -32,6 +32,13 @@ export class CurtoCafPage {
     this.getProductsByEstablishment();
   }
 
+  ionViewWillEnter() {
+    this.storage.get('pedidocompleto').then((res: any) => {
+      if(res) {
+        this.pedidocompleto = res;
+      }
+    });
+  }
 
   getProductsByEstablishment() {
     let url = 'http://pay4you-club.umbler.net/v1/establishments/'+ this.establishment.id + '/products';
@@ -45,23 +52,21 @@ export class CurtoCafPage {
   }
 
   addItem(item) {
+
     this.pedidocompleto.push(item);
 
     this.valorTotal = this.valorTotal + item.price;
-    console.log('addItem', this.valorTotal);
-    console.log('pedido', this.pedidocompleto);
     let pedidoMap = this.groupBy(this.pedidocompleto, produto => produto.id);
     this.pedido = this.getMapValues(pedidoMap);
 
-    // let products = new Array();
     if(!this.order) {
-      this.createOrder();
+      this.createOrder()
     }
 
-
     this.order.products.push(item.id);
-    console.log(this.order);
     this.storage.set('order', this.order);
+    this.storage.set('pedidocompleto', this.pedidocompleto);
+    this.storage.set('pedido', this.pedido);
   }
 
   createOrder() {
@@ -96,8 +101,6 @@ export class CurtoCafPage {
   confirmOrder() {
     let url = 'http://pay4you-club.umbler.net/v1/orders';
     let headers = new HttpHeaders({'Authorization': this.auth, 'Content-Type': 'application/json'});
-
-    console.log(headers);
 
     this.http.post(url, JSON.stringify(this.order), { headers: headers }).toPromise().then((res: any) => {
       this.pedido = [];

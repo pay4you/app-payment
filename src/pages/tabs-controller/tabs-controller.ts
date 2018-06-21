@@ -17,7 +17,6 @@ export class TabsControllerPage {
   token: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.token = this.navParams.get('token');
-    console.log('tabs', this.token);
   }
   goToConta(params){
     if (!params) params = {};

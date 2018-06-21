@@ -20,7 +20,6 @@ export class EntrarPage {
               private storage: Storage) {
 
     this.storage.get('token').then(token => {
-      console.log('token', token);
       if(token){
         this.navCtrl.setRoot(TabsControllerPage, {'token': token});
       }
@@ -45,7 +44,6 @@ export class EntrarPage {
     let header = new HttpHeaders().set("Content-Type", "application/json");
 
     this.http.post('http://pay4you-club.umbler.net/v1/users/authenticate', JSON.stringify(params), { headers: header}).toPromise().then((res: any) => {
-      console.log('response authentication', res);
       if(res.success) {
         this.storage.set('token', res.token);
         this.msg = res.message;
