@@ -6,7 +6,10 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page4">
-  <h3 id="conta-heading2" style="color:#000000;">
+  <div class="background-content">
+    <div style="background-image:url('/assets/img/profile.jpg')"></div>
+  </div>
+  <h3 id="conta-heading2" style="color:#fff;">
     Informações Pessoais
   </h3>
   <ion-card id="conta-card22">
@@ -33,7 +36,7 @@
       </ion-item>
     </ion-list>
   </ion-card>
-  <h3 id="conta-heading1" style="color:#000000;">
+  <h3 id="conta-heading1" style="color:#fff;">
     Cartões de Crédito
   </h3>
   <ion-card *ngFor="let card of cards" class="cartao">

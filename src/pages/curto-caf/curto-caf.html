@@ -6,6 +6,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
+  <div class="background-content">
+    <div style="background-image:url('/assets/img/menu.jpg')"></div>
+  </div>
   <ion-list id="curtoCaf-list5">
     <ion-item color="none" *ngFor="let product of products" (click)="addItem(product)">
       {{ product.name }} R$ {{ product.price/100 | number: '.2' }}

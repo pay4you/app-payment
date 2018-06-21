@@ -38,6 +38,7 @@ export class CurtoCafPage {
         this.pedidocompleto = res;
       }
     });
+    this.getProductsByEstablishment();
   }
 
   getProductsByEstablishment() {

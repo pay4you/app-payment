@@ -6,16 +6,17 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-list>
-    <ion-list id="pedido-list9">
-      <ion-item *ngFor="let group of order" color="none">
-        {{ group[0]?.name }} x {{group?.length}} = R$ {{(group[0]?.price*group?.length)/100 | number: '.2'}}
-      </ion-item>
-    </ion-list>
+  <div class="background-content">
+    <div style="background-image:url('/assets/img/payment.jpg')"></div>
+  </div>
+  <ion-list id="pedido-list9">
+    <ion-item *ngFor="let group of order" color="none">
+      {{ group[0]?.name }} x {{group?.length}} = R$ {{(group[0]?.price*group?.length)/100 | number: '.2'}}
+    </ion-item>
   </ion-list>
   <div class="spacer" style="width:300px;height:32px;" id="pedido-spacer5"></div>
   <div id="pedido-markdown8" class="show-list-numbers-and-dots">
-    <p style="color:#000000;">
+    <p style="color: white;">
       Valor Total: R$ {{ valorTotal/100 | number: '.2' }}
     </p>
   </div>
