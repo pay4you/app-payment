@@ -5,7 +5,10 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page2">
+<ion-content padding>
+  <div class="background-content">
+    <div style="background-image:url('/assets/img/establishments.jpg')"></div>
+  </div>
   <ion-list id="estabelecimentos-list3">
     <ion-item-sliding>
 
@@ -37,7 +40,7 @@
   </div>
   <div class="pagination">
     <ion-icon name="arrow-back" (click)="backPage()"></ion-icon>
-    <span> Pagina {{ page }} </span>
+    <span> Pagina {{ pagination }} </span>
     <ion-icon name="arrow-forward" (click)="forwardPage()"></ion-icon>
   </div>
 </ion-content>

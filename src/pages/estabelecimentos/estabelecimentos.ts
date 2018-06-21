@@ -13,6 +13,7 @@ export class EstabelecimentosPage {
   private auth: any;
   private establishments: any;
   public page: any = 1;
+  public pagination: any = 1;
 
   constructor(public navCtrl: NavController, public http: HttpClient,
               public navParams: NavParams) {
@@ -32,7 +33,6 @@ export class EstabelecimentosPage {
       this.establishments = res;
     });
 
-    console.log('estab', this.establishments);
   }
 
   goToCurtoCaf(item){
@@ -42,13 +42,15 @@ export class EstabelecimentosPage {
 
   backPage() {
     if(this.page > 1) {
-      this.page--;
+      this.pagination--;
+      this.page = this.page - 3;
       this.getEstablishments();
     }
   }
 
   forwardPage() {
-    this.page++;
+    this.page = this.page + 3;
+    this.pagination++;
     this.getEstablishments();
   }
 

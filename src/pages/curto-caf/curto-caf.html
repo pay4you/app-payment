@@ -5,11 +5,25 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page8">
+<ion-content>
   <ion-list id="curtoCaf-list5">
-    <ion-item color="none" *ngFor="let product of products">
+    <ion-item color="none" *ngFor="let product of products" (click)="addItem(product)">
       {{ product.name }} R$ {{ product.price/100 | number: '.2' }}
     </ion-item>
   </ion-list>
+
+  <div *ngIf="pedido?.length" class="pedido">
+    <ion-list>
+      <ion-item *ngFor="let group of pedido">
+        <span>{{group.length}}x</span> {{group[0].name}} R$ {{ (group[0].price*group.length)/100 | number: '.2' }}
+      </ion-item>
+    </ion-list>
+      <div class="total">
+        Valor total: R$ {{ valorTotal/100 | number: '.2' }}
+        <button ion-button color="positive" (click)="confirmOrder()">
+          Confirmar
+        </button>
+      </div>
+  </div>
 
 </ion-content>

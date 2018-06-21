@@ -1,3 +1,24 @@
 page-curto-caf {
 
+  .total {
+    text-align: right;
+  }
+
+  .pedido {
+    position: fixed;
+    bottom: 55px;
+    background-color: grey;
+    width: 100%;
+    border-radius: 5px 0;
+    color: white;
+    ion-list {
+      overflow-y: scroll;
+      max-height: 100px;
+    }
+    .item-md {
+      background-color: transparent;
+      color: white;
+    }
+  }
+
 }
